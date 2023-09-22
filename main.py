@@ -1,14 +1,16 @@
+import kivy
 from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
+from kivy.uix.boxlayout import BoxLayout
+import webview
 
-class Interface(FloatLayout):
-    def display_information(self):
-        data=self.ids.textInput.text
-        self.ids.label.text=data
-class ProjectApp(App):
-    pass
+kivy.require('1.11.1')
 
-ProjectApp().run()
+
+class WebBrowserApp(App):
+    def build(self):
+        layout = BoxLayout(orientation="vertical")
+        webview.create_window("Web Browser", "https://www.google.com", width=800, height=600)
+        return layout
+
+if __name__ == "__main__":
+    WebBrowserApp().run()
